@@ -1,0 +1,14 @@
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: ecommerce-mongodb
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:27018:27017"
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    volumes:
+      - ecommerce_mongodb_data:/data/db
+
+volumes:
+  ecommerce_mongodb_data:
